@@ -11,6 +11,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+import cz.mendelu.busItWeek.library.Task;
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.adapters.TutorialAdapter;
 
@@ -87,4 +88,6 @@ public class TutorialActivity extends AppCompatActivity {
             startActivity(new Intent(this, MapsActivity.class));
         }
     }
+
+    
 }
