@@ -91,8 +91,7 @@ public class MapsActivity extends AppCompatActivity
 
         beaconUtil = new BeaconUtil(this);
 
-        //TODO
-        // qrButton = findViewById(R.id.qr_code_button);
+        qrButton = findViewById(R.id.qr_code_button);
         setToolbar();
     }
 
