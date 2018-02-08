@@ -6,7 +6,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class TutorialActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private FloatingActionButton nextFrame;
+    private FloatingActionButton nextFrameButton;
     private TutorialAdapter tutorialAdapter;
 
     @Override
@@ -38,7 +37,7 @@ public class TutorialActivity extends AppCompatActivity {
     private void initViews() {
         viewPager = findViewById(R.id.tutorial_view_pager);
         tabLayout = findViewById(R.id.tab_layout_tutorial);
-        nextFrame = findViewById(R.id.next_frame_button);
+        nextFrameButton = findViewById(R.id.next_frame_button);
     }
 
     /**
@@ -57,9 +56,10 @@ public class TutorialActivity extends AppCompatActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 if (position == tutorialAdapter.getCount() - 1) {
-                    nextFrame.setImageResource(R.drawable.ic_explore_white_36dp);
+                    nextFrameButton.setImageResource(R.drawable.ic_explore_white_36dp);
+                    nextFrameButton.animate().rotationXBy(0).rotationX(360).setDuration(700).start();
                 } else {
-                    nextFrame.setImageResource(R.drawable.ic_arrow_forward_white_36dp);
+                    nextFrameButton.setImageResource(R.drawable.ic_arrow_forward_white_36dp);
                 }
             }
 

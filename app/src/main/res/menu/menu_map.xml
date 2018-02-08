@@ -14,5 +14,6 @@
         android:icon="@drawable/qr_icon"
         android:orderInCategory="0"
         android:title="Take a QR code"
+        android:onClick="openQRreader"
         app:showAsAction="always" />
 </menu>
