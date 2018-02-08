@@ -145,6 +145,7 @@ public class MapsActivity extends FragmentActivity
     }
 
     private void initializeListeners() {
+
         if (currentTask != null) {
             if (currentTask instanceof GPSTask) {
                 //i have gps task
@@ -227,6 +228,7 @@ public class MapsActivity extends FragmentActivity
     protected void onResume() {
         super.onResume();
         currentTask = storyLine.currentTask();
+        Log.i("onResume", "current task set");
         if (currentTask == null){
             // finish the app. Games is over.
             Intent intent = new Intent(this, PuzzleImageActivity.class);
@@ -248,12 +250,10 @@ public class MapsActivity extends FragmentActivity
         if (puzzle instanceof SimplePuzzle){
             Intent intent = new Intent( this, SimplePuzzleActivity.class);
             startActivity(intent);
-        }
-        if (puzzle instanceof ImageSelectPuzzle){
+        }elseif (puzzle instanceof ImageSelectPuzzle){
             Intent intent = new Intent( this, ImageSelectActivity.class);
             startActivity(intent);
-        }
-        if (puzzle instanceof ChoicePuzzle){
+        }elseif (puzzle instanceof ChoicePuzzle){
             Intent intent = new Intent( this, TextSelectActivity.class);
             startActivity(intent);
         }*/
@@ -328,8 +328,6 @@ public class MapsActivity extends FragmentActivity
                 entry.getValue().setVisible(false);
             }
         }
-        LatLng taskPosition = new LatLng(currentTask.getLatitude(), currentTask.getLongitude());
-        zoomToNewTask(taskPosition);
     }
 
     @Override
