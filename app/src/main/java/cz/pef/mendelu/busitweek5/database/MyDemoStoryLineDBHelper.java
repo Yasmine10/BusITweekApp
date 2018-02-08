@@ -6,7 +6,7 @@ import cz.mendelu.busItWeek.library.builder.StoryLineBuilder;
 
 public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
-    private static final int DB_VERSION = 6;
+    private static final int DB_VERSION = 15;
 
     public MyDemoStoryLineDBHelper() {
         super(DB_VERSION);
@@ -59,7 +59,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addCodeTask("4")
-                .qr("Welcome in Brno !")
+                .qr("jak")
                 .location(49.110417, 16.714601)
                 .choicePuzzle()
                 .question("One of the most famous legends in the city of Brno is that of the dragon that once threatened the people. " +

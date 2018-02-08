@@ -28,10 +28,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.SphericalUtil;
 
 import java.util.HashMap;
@@ -59,7 +61,6 @@ public class MapsActivity extends AppCompatActivity
 
 
     private GoogleMap mMap;
-    private StoryLine storyLine;
     private Task currentTask;
 
     private GoogleApiClient googleApiClient;
@@ -68,7 +69,10 @@ public class MapsActivity extends AppCompatActivity
     private BeaconUtil beaconUtil;
     private HashMap<Task, Marker> markers = new HashMap<>();
 
+
     private LatLngBounds.Builder builder;
+
+    private StoryLine storyLine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +99,8 @@ public class MapsActivity extends AppCompatActivity
         beaconUtil = new BeaconUtil(this);
 
         setToolbar();
+
+
     }
 
     /**
@@ -123,6 +129,7 @@ public class MapsActivity extends AppCompatActivity
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         initializeTasks();
+
 
         try {
             boolean success = mMap.setMapStyle(
@@ -197,12 +204,16 @@ public class MapsActivity extends AppCompatActivity
                 beaconUtil.startRanging();
                 //qrButton.setVisibility(View.GONE);
 
+
             }
             if (currentTask instanceof CodeTask) {
                 //i have code task
                 //qrButton.setVisibility(View.VISIBLE);
+
+
             }
         }
+
     }
 
     private void cancelListeners() {

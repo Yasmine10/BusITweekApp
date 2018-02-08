@@ -39,6 +39,7 @@ public class SimplePuzzleActivity extends AppCompatActivity {
         question = findViewById(R.id.question);
 
         storyLine = StoryLine.open(this, MyDemoStoryLineDBHelper.class);
+
         currentTask = storyLine.currentTask();
 
         puzzle = (SimplePuzzle) currentTask.getPuzzle();
