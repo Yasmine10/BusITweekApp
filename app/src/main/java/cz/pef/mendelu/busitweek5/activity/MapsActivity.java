@@ -309,7 +309,7 @@ public class MapsActivity extends AppCompatActivity
             @Override
             public void onMapLoaded() {
                 LatLngBounds bounds = builder.build();
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 100);
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 200);
                 mMap.animateCamera(cameraUpdate);
             }
         });
