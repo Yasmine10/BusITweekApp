@@ -70,6 +70,7 @@ public class MapsActivity extends AppCompatActivity
 
     private LatLngBounds.Builder builder;
 
+    private MenuItem qrButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,17 +191,17 @@ public class MapsActivity extends AppCompatActivity
                                     googleApiClient,
                                     locationRequest, MapsActivity.this);
                 }
-                //qrButton.setVisibility(View.GONE);
+                //qrButton.setVisible(false);
             }
             if (currentTask instanceof BeaconTask) {
                 //i have Beacon task
                 beaconUtil.startRanging();
-                //qrButton.setVisibility(View.GONE);
+                //qrButton.setVisible(false);
 
             }
             if (currentTask instanceof CodeTask) {
                 //i have code task
-                //qrButton.setVisibility(View.VISIBLE);
+                //qrButton.setVisible(true);
             }
         }
     }
@@ -377,9 +378,9 @@ public class MapsActivity extends AppCompatActivity
         return true;
     }
 
-    public void scanForQrCode(View view) {
+    public boolean scanForQrCode(MenuItem menuItem) {
         QRCodeUtil.startQRScan(this);
-
+        return true;
     }
 
     @Override
@@ -403,6 +404,7 @@ public class MapsActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        qrButton = menu.findItem(R.id.menu_qr);
         getMenuInflater().inflate(R.menu.menu_map, menu);
         return true;
     }
@@ -419,6 +421,8 @@ public class MapsActivity extends AppCompatActivity
     }
 
     public void openQRreader(MenuItem item) {
-        //HEEEEEEERRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEE
+
     }
+
+
 }
