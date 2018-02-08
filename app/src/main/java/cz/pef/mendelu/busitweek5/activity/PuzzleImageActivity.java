@@ -1,7 +1,9 @@
 package cz.pef.mendelu.busitweek5.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 
@@ -146,11 +148,24 @@ public class PuzzleImageActivity extends AppCompatActivity {
     }
 
     /**
+     * @param item
+     */
+    public void openTreasure(MenuItem item) {
+        startActivity(new Intent(this, TreasureActivity.class));
+    }
+
+    /**
      * Set toolbar
      */
     private void setToolbar() {
         getSupportActionBar().setTitle(R.string.activity_title_puzzle_image);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_puzzle, menu);
+        return true;
     }
 
     @Override

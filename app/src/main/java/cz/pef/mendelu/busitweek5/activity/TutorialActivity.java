@@ -11,9 +11,9 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import cz.mendelu.busItWeek.library.Task;
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.adapters.TutorialAdapter;
+import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
 
 public class TutorialActivity extends AppCompatActivity {
 
@@ -29,7 +29,6 @@ public class TutorialActivity extends AppCompatActivity {
 
         initViews();
         setUpViewPager();
-        //FOR TUTORIAL
     }
 
     /**
@@ -84,10 +83,9 @@ public class TutorialActivity extends AppCompatActivity {
         if (viewPager.getCurrentItem() + 1 < tutorialAdapter.getCount()) {
             viewPager.setCurrentItem(item + 1, true);
         } else {
+            SharedPrefUtil.setTutorialStatus(this.getApplicationContext(), false);
             finish();
             startActivity(new Intent(this, MapsActivity.class));
         }
     }
-
-
 }
