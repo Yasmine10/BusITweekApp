@@ -6,7 +6,7 @@ import cz.mendelu.busItWeek.library.builder.StoryLineBuilder;
 
 public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
-    private static final int DB_VERSION = 4;
+    private static final int DB_VERSION = 6;
 
     public MyDemoStoryLineDBHelper() {
         super(DB_VERSION);

@@ -14,6 +14,8 @@ import cz.mendelu.busItWeek.library.Task;
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.database.MyDemoStoryLineDBHelper;
 
+import static cz.pef.mendelu.busitweek5.utils.SharedPrefUtil.getAnsweredQuestions;
+
 
 public class SimplePuzzleActivity extends AppCompatActivity {
 
@@ -52,6 +54,7 @@ public class SimplePuzzleActivity extends AppCompatActivity {
 
         if (userAnswer.equalsIgnoreCase(correctAnswer)) {
             // Correct answer
+            getAnsweredQuestions(this);
             storyLine.currentTask().finish(true);
             finish();
         } else {

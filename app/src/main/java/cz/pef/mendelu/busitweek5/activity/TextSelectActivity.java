@@ -66,6 +66,8 @@ public class TextSelectActivity extends AppCompatActivity {
 
     public void answerQuestion(View view) {
 
+        
+
     }
 
     public class AnswerViewHolder extends RecyclerView.ViewHolder{
