@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Location;
 
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.maps.android.SphericalUtil;
 
@@ -122,6 +124,16 @@ public class MapsActivity extends AppCompatActivity
         mMap = googleMap;
         initializeTasks();
 
+        try {
+            boolean success = mMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(this, R.raw.google_maps_app));
+            if (!success) {
+                Log.e("MapsActivity", "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e("MapsActivity", "Can't find style. Error: ", e);
+        }
+
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -176,7 +188,7 @@ public class MapsActivity extends AppCompatActivity
                             .FusedLocationApi
                             .requestLocationUpdates(
                                     googleApiClient,
-                                    locationRequest, MapsActivity.this );
+                                    locationRequest, MapsActivity.this);
                 }
                 qrButton.setVisibility(View.GONE);
             }
@@ -219,7 +231,6 @@ public class MapsActivity extends AppCompatActivity
             }
         }
     }
-
 
 
     @Override
