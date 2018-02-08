@@ -47,6 +47,8 @@
         <activity android:name=".activity.PuzzleImageActivity" />
         <activity android:name=".activity.SettingsActivity" />
         <activity android:name=".activity.AboutUsActivity"></activity>
+        <activity android:name=".activity.SimplePuzzleActivity"/>
+        <activity android:name=".activity.TextSelectActivity"/>
     </application>
 
 </manifest>
