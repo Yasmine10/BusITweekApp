@@ -1,9 +1,12 @@
 package cz.pef.mendelu.busitweek5.activity;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -15,6 +18,8 @@ import cz.pef.mendelu.busitweek5.adapters.TutorialAdapter;
 public class TutorialActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
+    private TabLayout tabLayout;
+    private FloatingActionButton nextFrame;
     private TutorialAdapter tutorialAdapter;
 
     @Override
@@ -32,6 +37,8 @@ public class TutorialActivity extends AppCompatActivity {
      */
     private void initViews() {
         viewPager = findViewById(R.id.tutorial_view_pager);
+        tabLayout = findViewById(R.id.tab_layout_tutorial);
+        nextFrame = findViewById(R.id.next_frame_button);
     }
 
     /**
@@ -41,13 +48,37 @@ public class TutorialActivity extends AppCompatActivity {
         List<Integer> pages = new ArrayList<>();
         pages.add(R.layout.tutorial_first);
         pages.add(R.layout.tutorial_second);
+        pages.add(R.layout.tutorial_third);
         tutorialAdapter = new TutorialAdapter(pages);
         viewPager.setAdapter(tutorialAdapter);
-        //tabLayout.setupWithViewPager(viewPager, true);
+        tabLayout.setupWithViewPager(viewPager, true);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (position == tutorialAdapter.getCount() - 1) {
+                    nextFrame.setImageResource(R.drawable.ic_explore_white_36dp);
+                } else {
+                    nextFrame.setImageResource(R.drawable.ic_arrow_forward_white_36dp);
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
     }
 
-    //temporary button for opening map
-    public void openMap(View view) {
-        startActivity(new Intent(this, MapsActivity.class));
+    public void nextTutorialFrame(View view) {
+        int item = viewPager.getCurrentItem();
+        if (viewPager.getCurrentItem() + 1 < tutorialAdapter.getCount()) {
+            viewPager.setCurrentItem(item + 1, true);
+        } else {
+            startActivity(new Intent(this, MapsActivity.class));
+        }
     }
 }
