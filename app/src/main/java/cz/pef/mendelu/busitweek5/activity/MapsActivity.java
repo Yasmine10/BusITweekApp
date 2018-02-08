@@ -255,17 +255,18 @@ public class MapsActivity extends AppCompatActivity
     }
 
     private void runPuzzleActivity(Puzzle puzzle) {
-        /*TODO
+
         if (puzzle instanceof SimplePuzzle){
             Intent intent = new Intent( this, SimplePuzzleActivity.class);
             startActivity(intent);
-        }elseif (puzzle instanceof ImageSelectPuzzle){
+        /*}elseif (puzzle instanceof ImageSelectPuzzle){
             Intent intent = new Intent( this, ImageSelectActivity.class);
-            startActivity(intent);
-        }elseif (puzzle instanceof ChoicePuzzle){
+            startActivity(intent);*/
+        }
+        if (puzzle instanceof ChoicePuzzle){
             Intent intent = new Intent( this, TextSelectActivity.class);
             startActivity(intent);
-        }*/
+        }
     }
 
     private void initializeTasks() {
