@@ -1,5 +1,8 @@
 package cz.pef.mendelu.busitweek5.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,6 +48,27 @@ public class SettingsActivity extends AppCompatActivity {
     private void setToolbar() {
         getSupportActionBar().setTitle(R.string.activity_title_settings);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void tutorialDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Do you really want show a tutorial?")
+                .setCancelable(true)
+                .setPositiveButton("SHOW TUTORIAL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        // TODO: 08-Feb-18 finish
+                        startActivity(new Intent(SettingsActivity.this, TutorialActivity.class));
+                    }
+                })
+                .setNegativeButton("CLOSE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.create().show();
     }
 
     @Override

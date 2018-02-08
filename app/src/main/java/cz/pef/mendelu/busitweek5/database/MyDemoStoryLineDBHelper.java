@@ -6,7 +6,11 @@ import cz.mendelu.busItWeek.library.builder.StoryLineBuilder;
 
 public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
+
     private static final int DB_VERSION = 15;
+
+
+
 
     public MyDemoStoryLineDBHelper() {
         super(DB_VERSION);
@@ -16,8 +20,8 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
     protected void onCreate(StoryLineBuilder builder) {
 
         builder.addGPSTask("1")
-                .location(49.259804, 16.654527)
-                .radius(1000)
+                .location(49.210008, 16.614746)
+                .radius(10)
                 .simplePuzzle()
                 .question("I am a vast complex called Špilberk situated atop a hill of the same name. " +
                         "I was established in the 13th centry by Přemysl Otakar II to protect both the Czech lands and the town of Brno." +
@@ -28,7 +32,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addBeaconTask("2")
-                .location(49.279804, 16.604527)
+                .location(49.209938, 16.615687)
                 .beacon(6977,28402)
                 .hint("purple beacon")
                 .choicePuzzle()
@@ -44,7 +48,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addGPSTask("3")
-                .location(49.229804, 16.594527)
+                .location(49.210899, 16.616477)
                 .radius(1000)
                 .choicePuzzle()
                 .question("You’re now in front of the Constitutional Court of the Czech Republic. " +
@@ -76,7 +80,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
         builder.addGPSTask("5")
                 .radius(1000)
-                .location(49.175258, 16.571470)
+                .location(49.211356, 16.617858)
                 .simplePuzzle()
                 .question("On approach of the old Town Hall you might notice that one of the turrets on the decorative facade looks a bit skewed. " +
                         "The story goes that Anton Pilgram, the building’s architect was screwed out of money by Brno’s City Council and his payback was to mess with the design. " +
@@ -89,7 +93,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
         builder.addCodeTask("6")
                 .qr("mendelu")
-                .location(49.190341, 16.610712)
+                .location(49.209782, 16.616275)
                 .simplePuzzle()
                 .question("In front of which kind of building are you right now ?")
                 .answer("theatre")
@@ -97,7 +101,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addBeaconTask("7")
-                .location(49.196805, 16.614242)
+                .location(49.209511, 16.615211)
                 .beacon(14294,18407)
                 .hint("red beacon")
                 .simplePuzzle()
@@ -109,7 +113,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
         builder.addCodeTask("8")
                 .qr("b jako brno")
-                .location(49.194109, 16.659529)
+                .location(49.210285, 16.614651)
                 .simplePuzzle()
                 .question("What is the name of this place ?")
                 .answer("b jako brno")
