@@ -240,8 +240,8 @@ public class MapsActivity extends AppCompatActivity
         Log.i("onResume", "current task set");
         if (currentTask == null) {
             // finish the app. Games is over.
-            Intent intent = new Intent(this, PuzzleImageActivity.class);
-            startActivity(intent);
+            //TODO
+            //Finishing screen, showing map with marker or something else??
         } else {
             initializeListeners();
             updateMarkers();
@@ -320,17 +320,22 @@ public class MapsActivity extends AppCompatActivity
             @Override
             public void onMapLoaded() {
                 LatLngBounds bounds = builder.build();
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 100);
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 200);
                 mMap.animateCamera(cameraUpdate);
             }
         });
+        Log.i("updateMarkers", "tasks initilized");
+
     }
 
     private void updateMarkers() {
+        Log.i("updateMarkers", "updating markers...");
         for (Map.Entry<Task, Marker> entry : markers.entrySet()) {
             if (currentTask != null) {
                 if (currentTask.getName().equals(entry.getKey().getName())) {
                     entry.getValue().setVisible(true);
+                    Log.i("updateMarkers", "Current task set visible");
+
                 } else {
                     entry.getValue().setVisible(false);
                 }
@@ -345,7 +350,7 @@ public class MapsActivity extends AppCompatActivity
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Skip task?")
-                .setMessage("Do you want to skipe the current task")
+                .setMessage("Do you want to skip the current task? (" + currentTask.getName() + ")")
                 .setCancelable(true)
                 .setPositiveButton("SKIP TASK", new DialogInterface.OnClickListener() {
                     @Override

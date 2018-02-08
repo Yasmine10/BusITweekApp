@@ -5,68 +5,14 @@
     android:layout_height="match_parent"
     tools:context="cz.pef.mendelu.busitweek5.activity.PuzzleImageActivity">
 
-    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/GridLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:orientation="horizontal"
-        android:rowCount="2"
-        tools:context=".activity.PuzzleImageActivity">
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left|top"
-            android:text="Button" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left|top"
-            android:text="Button" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left|top"
-            android:text="Button" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left|center"
-            android:text="Button" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left|center"
-            android:text="Button" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left|center"
-            android:text="Button" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left|bottom"
-            android:text="Button" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left|bottom"
-            android:text="Button" />
-
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="left|bottom"
-            android:text="Button" />
-    </GridLayout>
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="160dp"
+        android:gravity="center"
+        android:horizontalSpacing="0dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="0dp" />
 </LinearLayout>
