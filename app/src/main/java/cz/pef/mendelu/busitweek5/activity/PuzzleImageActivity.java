@@ -35,20 +35,113 @@ public class PuzzleImageActivity extends AppCompatActivity {
                         R.drawable.white_part
                 };
                 break;
-
+            case 1:
+                puzzles = new int[]{
+                        R.drawable.top_left,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.given_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part
+                };
+                break;
+            case 2:
+                puzzles = new int[]{
+                        R.drawable.top_left,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.center_part,
+                        R.drawable.white_part,
+                        R.drawable.given_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part
+                };
+                break;
+            case 3:
+                puzzles = new int[]{
+                        R.drawable.top_left,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.center_part,
+                        R.drawable.white_part,
+                        R.drawable.given_part,
+                        R.drawable.white_part,
+                        R.drawable.bottom_right
+                };
+                break;
+            case 4:
+                puzzles = new int[]{
+                        R.drawable.top_left,
+                        R.drawable.top_center,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.center_part,
+                        R.drawable.white_part,
+                        R.drawable.given_part,
+                        R.drawable.white_part,
+                        R.drawable.bottom_right
+                };
+                break;
+            case 5:
+                puzzles = new int[]{
+                        R.drawable.top_left,
+                        R.drawable.top_center,
+                        R.drawable.white_part,
+                        R.drawable.center_left,
+                        R.drawable.center_part,
+                        R.drawable.white_part,
+                        R.drawable.given_part,
+                        R.drawable.white_part,
+                        R.drawable.bottom_right
+                };
+                break;
+            case 6:
+                puzzles = new int[]{
+                        R.drawable.top_left,
+                        R.drawable.top_center,
+                        R.drawable.white_part,
+                        R.drawable.center_left,
+                        R.drawable.center_part,
+                        R.drawable.white_part,
+                        R.drawable.given_part,
+                        R.drawable.bottom_center,
+                        R.drawable.bottom_right
+                };
+                break;
+            case 7:
+                puzzles = new int[]{
+                        R.drawable.top_left,
+                        R.drawable.top_center,
+                        R.drawable.top_right,
+                        R.drawable.center_left,
+                        R.drawable.center_part,
+                        R.drawable.white_part,
+                        R.drawable.given_part,
+                        R.drawable.bottom_center,
+                        R.drawable.bottom_right
+                };
+                break;
+            case 8:
+                puzzles = new int[]{
+                        R.drawable.top_left,
+                        R.drawable.top_center,
+                        R.drawable.top_right,
+                        R.drawable.center_left,
+                        R.drawable.center_part,
+                        R.drawable.center_right,
+                        R.drawable.given_part,
+                        R.drawable.bottom_center,
+                        R.drawable.bottom_right
+                };
+                break;
         }
 
-        gridView.setAdapter(new GridAdapter(this, new int[]{
-                R.drawable.top_left,
-                R.drawable.top_center,
-                R.drawable.top_right,
-                R.drawable.center_left,
-                R.drawable.center_part,
-                R.drawable.center_right,
-                R.drawable.given_part,
-                R.drawable.bottom_center,
-                R.drawable.bottom_right
-        }));
+        gridView.setAdapter(new GridAdapter(this, puzzles));
         setToolbar();
     }
 

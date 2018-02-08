@@ -5,7 +5,7 @@
     <string name="tutorial_second">Do you know Gregor Mendel? Mendel was a scientist born in a German-speaking family in the Silesian part of the Austrian Empire (today’s Czech Republic). He gained posthumous recognition as the founder of the modern science of genetics. Today, a university in Brno is called Mendel University in memory of this great man. Mendel will guide you through the city to discover famous places of Brno which are plenty of history. Swipe right to lean about instructions for the game.</string>
     <string name="tutorial_first">It’s the second largest city in Czech Republic by population and area but also the largest Moravian city and the historical capital city of the Margraviate of Moravia. Brno lies at the confluence of the Svitava and Svratka rivers and has about 400 000 inhabitants. Swipe left to discover your guide for this awesome sightseeing.</string>
     <string name="tutorial_first_title">Welcome in Brno!</string>
-    <string name="activity_title_puzzle_image">Treasure</string>
+    <string name="activity_title_puzzle_image">Pieces of puzzle</string>
     <string name="activity_title_about_us">About us</string>
     <string name="activity_title_settings">Settings</string>
 </resources>
