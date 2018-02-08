@@ -191,17 +191,17 @@ public class MapsActivity extends AppCompatActivity
                                     googleApiClient,
                                     locationRequest, MapsActivity.this);
                 }
-                qrButton.setVisible(false);
+                //qrButton.setVisible(false);
             }
             if (currentTask instanceof BeaconTask) {
                 //i have Beacon task
                 beaconUtil.startRanging();
-                qrButton.setVisible(false);
+                //qrButton.setVisible(false);
 
             }
             if (currentTask instanceof CodeTask) {
                 //i have code task
-                qrButton.setVisible(true);
+                //qrButton.setVisible(true);
             }
         }
     }
