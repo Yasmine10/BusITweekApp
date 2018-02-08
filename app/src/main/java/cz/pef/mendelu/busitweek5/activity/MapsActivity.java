@@ -324,13 +324,18 @@ public class MapsActivity extends AppCompatActivity
                 mMap.animateCamera(cameraUpdate);
             }
         });
+        Log.i("updateMarkers", "tasks initilized");
+
     }
 
     private void updateMarkers() {
+        Log.i("updateMarkers", "updating markers...");
         for (Map.Entry<Task, Marker> entry : markers.entrySet()) {
             if (currentTask != null) {
                 if (currentTask.getName().equals(entry.getKey().getName())) {
                     entry.getValue().setVisible(true);
+                    Log.i("updateMarkers", "Current task set visible");
+
                 } else {
                     entry.getValue().setVisible(false);
                 }
