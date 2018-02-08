@@ -7,10 +7,12 @@ import android.widget.GridView;
 
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.adapters.GridAdapter;
+import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
 
 public class PuzzleImageActivity extends AppCompatActivity {
 
     private GridView gridView;
+    private int[] puzzles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,23 @@ public class PuzzleImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_puzzle_image);
 
         gridView = findViewById(R.id.gridView);
+
+        switch (SharedPrefUtil.getAnsweredQuestions(this)) {
+            case 0:
+                puzzles = new int[]{
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part,
+                        R.drawable.given_part,
+                        R.drawable.white_part,
+                        R.drawable.white_part
+                };
+                break;
+
+        }
 
         gridView.setAdapter(new GridAdapter(this, new int[]{
                 R.drawable.top_left,
@@ -37,7 +56,7 @@ public class PuzzleImageActivity extends AppCompatActivity {
      * Set toolbar
      */
     private void setToolbar() {
-        getSupportActionBar().setTitle("Treasure");
+        getSupportActionBar().setTitle(R.string.activity_title_puzzle_image);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
