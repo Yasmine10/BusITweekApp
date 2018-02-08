@@ -107,7 +107,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .puzzleDone()
                 .taskDone();
 
-        builder.addCodeTask("7")
+        builder.addCodeTask("8")
                 .qr("b jako brno")
                 .location(49.194109, 16.659529)
                 .simplePuzzle()

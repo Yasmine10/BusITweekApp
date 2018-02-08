@@ -66,7 +66,7 @@ public class TextSelectActivity extends AppCompatActivity {
 
     public void answerQuestion(View view) {
 
-        
+
 
     }
 
