@@ -10,16 +10,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toolbar;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -39,12 +35,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cz.mendelu.busItWeek.library.BeaconTask;
-import cz.mendelu.busItWeek.library.ChoicePuzzle;
 import cz.mendelu.busItWeek.library.CodeTask;
 import cz.mendelu.busItWeek.library.GPSTask;
-import cz.mendelu.busItWeek.library.ImageSelectPuzzle;
 import cz.mendelu.busItWeek.library.Puzzle;
-import cz.mendelu.busItWeek.library.SimplePuzzle;
 import cz.mendelu.busItWeek.library.StoryLine;
 import cz.mendelu.busItWeek.library.Task;
 import cz.mendelu.busItWeek.library.beacons.BeaconDefinition;
@@ -53,7 +46,6 @@ import cz.mendelu.busItWeek.library.map.MapUtil;
 import cz.mendelu.busItWeek.library.qrcode.QRCodeUtil;
 
 import cz.pef.mendelu.busitweek5.R;
-import cz.pef.mendelu.busitweek5.activity.PuzzleImageActivity;
 import cz.pef.mendelu.busitweek5.database.MyDemoStoryLineDBHelper;
 
 
@@ -100,21 +92,21 @@ public class MapsActivity extends AppCompatActivity
 
         //TODO
         // qrButton = findViewById(R.id.qr_code_button);
-
-
         setToolbar();
     }
-
 
     /**
      * Set toolbar
      */
     private void setToolbar() {
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
-        //toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorAccent));
         setSupportActionBar(toolbar);
     }
 
+
+    public void openPuzzleImage(View view) {
+        startActivity(new Intent(this, PuzzleImageActivity.class));
+    }
 
     /**
      * Manipulates the map once available.
@@ -177,7 +169,7 @@ public class MapsActivity extends AppCompatActivity
                             this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
                             != PackageManager.PERMISSION_GRANTED) {
                         // TODO: Consider calling
-                        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},100);
+                        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 100);
                         return;
                     }
                     LocationServices
@@ -190,13 +182,13 @@ public class MapsActivity extends AppCompatActivity
                 }
                 qrButton.setVisibility(View.GONE);
             }
-            if (currentTask instanceof BeaconTask){
+            if (currentTask instanceof BeaconTask) {
                 //i have Beacon task
                 beaconUtil.startRanging();
                 qrButton.setVisibility(View.GONE);
 
             }
-            if (currentTask instanceof CodeTask){
+            if (currentTask instanceof CodeTask) {
                 //i have code task
                 qrButton.setVisibility(View.VISIBLE);
 
@@ -205,25 +197,25 @@ public class MapsActivity extends AppCompatActivity
         }
     }
 
-    private void cancelListeners(){
-        if (googleApiClient.isConnected()){
+    private void cancelListeners() {
+        if (googleApiClient.isConnected()) {
             LocationServices
                     .FusedLocationApi
                     .removeLocationUpdates(googleApiClient, (com.google.android.gms.location.LocationListener) this);
         }
-        if (beaconUtil.isRanging()){
+        if (beaconUtil.isRanging()) {
             beaconUtil.stopRanging();
         }
     }
 
     @Override
     public void onLocationChanged(Location location) {
-        if (currentTask != null && currentTask instanceof GPSTask){
+        if (currentTask != null && currentTask instanceof GPSTask) {
             double radius = ((GPSTask) currentTask).getRadius();
-            LatLng userPosition = new LatLng(location.getLatitude(),location.getLongitude());
+            LatLng userPosition = new LatLng(location.getLatitude(), location.getLongitude());
             LatLng taskPosition = new LatLng(currentTask.getLatitude(), currentTask.getLongitude());
 
-            if(SphericalUtil.computeDistanceBetween(userPosition, taskPosition) < radius){
+            if (SphericalUtil.computeDistanceBetween(userPosition, taskPosition) < radius) {
                 //run activity
                 runPuzzleActivity(currentTask.getPuzzle());
             }
@@ -250,7 +242,7 @@ public class MapsActivity extends AppCompatActivity
         super.onResume();
         currentTask = storyLine.currentTask();
         Log.i("onResume", "current task set");
-        if (currentTask == null){
+        if (currentTask == null) {
             // finish the app. Games is over.
             Intent intent = new Intent(this, PuzzleImageActivity.class);
             startActivity(intent);
@@ -266,7 +258,7 @@ public class MapsActivity extends AppCompatActivity
         cancelListeners();
     }
 
-    private void runPuzzleActivity(Puzzle puzzle){
+    private void runPuzzleActivity(Puzzle puzzle) {
         /*TODO
         if (puzzle instanceof SimplePuzzle){
             Intent intent = new Intent( this, SimplePuzzleActivity.class);
@@ -279,28 +271,29 @@ public class MapsActivity extends AppCompatActivity
             startActivity(intent);
         }*/
     }
-    private void initializeTasks(){
+
+    private void initializeTasks() {
         builder = new LatLngBounds.Builder();
-        for (Task task : storyLine.taskList()){
+        for (Task task : storyLine.taskList()) {
             Marker newMarker = null;
-            if (task instanceof GPSTask){
+            if (task instanceof GPSTask) {
                 newMarker = MapUtil.createColoredCircleMarker(
                         this,
                         mMap,
                         task.getName(),
                         R.color.colorPrimary,
                         R.style.marker_text_style,
-                        new LatLng(task.getLatitude(),task.getLongitude())
+                        new LatLng(task.getLatitude(), task.getLongitude())
                 );
             }
-            if (task instanceof BeaconTask){
+            if (task instanceof BeaconTask) {
                 newMarker = MapUtil.createColoredCircleMarker(
                         this,
                         mMap,
                         task.getName(),
                         R.color.colorPrimary,
                         R.style.marker_text_style,
-                        new LatLng(task.getLatitude(),task.getLongitude())
+                        new LatLng(task.getLatitude(), task.getLongitude())
                 );
                 BeaconDefinition definition = new BeaconDefinition((BeaconTask) task) {
                     @Override
@@ -312,14 +305,14 @@ public class MapsActivity extends AppCompatActivity
                 beaconUtil.addBeacon(definition);
 
             }
-            if (task instanceof CodeTask){
+            if (task instanceof CodeTask) {
                 newMarker = MapUtil.createColoredCircleMarker(
                         this,
                         mMap,
                         task.getName(),
                         R.color.colorPrimary,
                         R.style.marker_text_style,
-                        new LatLng(task.getLatitude(),task.getLongitude())
+                        new LatLng(task.getLatitude(), task.getLongitude())
                 );
             }
             builder.include(new LatLng(task.getLatitude(), task.getLongitude()));
@@ -337,10 +330,10 @@ public class MapsActivity extends AppCompatActivity
         });
     }
 
-    private void updateMarkers(){
-        for (Map.Entry<Task, Marker> entry : markers.entrySet()){
-            if (currentTask !=null){
-                if (currentTask.getName().equals(entry.getKey().getName())){
+    private void updateMarkers() {
+        for (Map.Entry<Task, Marker> entry : markers.entrySet()) {
+            if (currentTask != null) {
+                if (currentTask.getName().equals(entry.getKey().getName())) {
                     entry.getValue().setVisible(true);
                 } else {
                     entry.getValue().setVisible(false);
@@ -364,9 +357,9 @@ public class MapsActivity extends AppCompatActivity
                         dialogInterface.dismiss();
                         currentTask.skip();
                         currentTask = storyLine.currentTask();
-                        if (currentTask == null){
+                        if (currentTask == null) {
                             //finish the app
-                        }else {
+                        } else {
                             cancelListeners();
                             initializeListeners();
                         }
@@ -384,7 +377,6 @@ public class MapsActivity extends AppCompatActivity
                 .show();
 
 
-
         return true;
     }
 
@@ -398,15 +390,16 @@ public class MapsActivity extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
 
         currentTask = storyLine.currentTask();
-        if (currentTask != null && currentTask instanceof CodeTask){
+        if (currentTask != null && currentTask instanceof CodeTask) {
             String result = QRCodeUtil.onScanResult(this, requestCode, resultCode, data);
             CodeTask codeTask = (CodeTask) currentTask;
-            if (codeTask.getQR().equalsIgnoreCase(result)){
+            if (codeTask.getQR().equalsIgnoreCase(result)) {
                 runPuzzleActivity(currentTask.getPuzzle());
             }
         }
     }
-    private void zoomToNewTask(LatLng position){
+
+    private void zoomToNewTask(LatLng position) {
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(position, 15);
         mMap.animateCamera(cameraUpdate);
     }
