@@ -50,11 +50,38 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    /**
+     * Dialog for reseting tutorial
+     */
     public void tutorialDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle("Do you really want show a tutorial?")
+                .setTitle("Do you really want to show a tutorial?")
                 .setCancelable(true)
                 .setPositiveButton("SHOW TUTORIAL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        // TODO: 08-Feb-18 finish
+                        startActivity(new Intent(SettingsActivity.this, TutorialActivity.class));
+                    }
+                })
+                .setNegativeButton("CLOSE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.create().show();
+    }
+
+    /**
+     * Dialog for reseting the game
+     */
+    public void resetGameDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Do you really want to reset a game?")
+                .setCancelable(true)
+                .setPositiveButton("RESET GAME", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();

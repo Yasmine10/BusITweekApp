@@ -61,6 +61,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         break;
                     case 1:
                         SharedPrefUtil.setGameStatus(context.getApplicationContext(), true);
+                        ((SettingsActivity) context).resetGameDialog();
                         break;
                     case 2:
                         context.startActivity(new Intent(context, AboutUsActivity.class));
