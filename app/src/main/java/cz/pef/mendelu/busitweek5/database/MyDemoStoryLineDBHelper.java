@@ -6,7 +6,7 @@ import cz.mendelu.busItWeek.library.builder.StoryLineBuilder;
 
 public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
-    private static final int DB_VERSION = 12;
+    private static final int DB_VERSION = 18;
 
     public MyDemoStoryLineDBHelper() {
         super(DB_VERSION);
@@ -15,9 +15,21 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
     @Override
     protected void onCreate(StoryLineBuilder builder) {
 
-        builder.addBeaconTask("1")
+        builder.addGPSTask("1")
+                .location(49.210008, 16.614746)
+                .radius(10)
+                .simplePuzzle()
+                .question("I am a vast complex called Špilberk situated atop a hill of the same name. " +
+                        "I was established in the 13th centry by Přemysl Otakar II to protect both the Czech lands and the town of Brno." +
+                        " An occasional residence of Moravian margraves, I became a huge military fortress in the 17th and 18th centuries. " +
+                        "My walls offer an amazing view of Brno. I am a…")
+                .answer("castle")
+                .puzzleDone()
+                .taskDone();
+
+        builder.addBeaconTask("2")
                 .location(49.209938, 16.615687)
-                .beacon(6977,28402)
+                .beacon(6977, 28402)
                 .hint("purple beacon")
                 .choicePuzzle()
                 .question("Welcome to St James the Elder Church! " +
@@ -30,20 +42,6 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .addChoice("a dragon", false)
                 .puzzleDone()
                 .taskDone();
-
-        builder.addGPSTask("2")
-                .location(49.210008, 16.614746)
-                .radius(10)
-                .simplePuzzle()
-                .question("I am a vast complex called Špilberk situated atop a hill of the same name. " +
-                        "I was established in the 13th centry by Přemysl Otakar II to protect both the Czech lands and the town of Brno." +
-                        " An occasional residence of Moravian margraves, I became a huge military fortress in the 17th and 18th centuries. " +
-                        "My walls offer an amazing view of Brno. I am a…")
-                .answer("castle")
-                .puzzleDone()
-                .taskDone();
-
-
 
         builder.addGPSTask("3")
                 .location(49.210899, 16.616477)
@@ -61,8 +59,8 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addCodeTask("4")
-                .qr("Welcome in Brno !")
-                .location(49.212113, 16.616230)
+                .qr("jak")
+                .location(49.110417, 16.714601)
                 .choicePuzzle()
                 .question("One of the most famous legends in the city of Brno is that of the dragon that once threatened the people. " +
                         "It is said that the beast was savaging the citizens and their livestock and no one seemed to know how to stop it. " +
@@ -100,7 +98,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
         builder.addBeaconTask("7")
                 .location(49.209511, 16.615211)
-                .beacon(14294,18407)
+                .beacon(14294, 18407)
                 .hint("red beacon")
                 .simplePuzzle()
                 .question("You are now in front of a famous pub of Brno. " +
@@ -117,26 +115,5 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .answer("b jako brno")
                 .puzzleDone()
                 .taskDone();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
 }

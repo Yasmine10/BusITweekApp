@@ -4,38 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="cz.pef.mendelu.busitweek5.activity.SimplePuzzleActivity"
-    tools:showIn="@layout/activity_simple_puzzle"
-    android:orientation="vertical">
+    tools:showIn="@layout/activity_simple_puzzle">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+            android:lineSpacingExtra="4dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:layout_marginTop="8dp"
+            android:hint="Answer" />
 
         <Button
-            android:onClick="answerQuestion"
-            android:text="Submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@android:color/darker_gray"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
+            android:onClick="answerQuestion"
+            android:text="@string/activity_questions_submit"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
-
 </android.support.constraint.ConstraintLayout>

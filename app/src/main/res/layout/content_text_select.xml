@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginEnd="16dp"
     android:layout_marginStart="16dp"
-    android:paddingTop="32dp"
+    android:paddingTop="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="cz.pef.mendelu.busitweek5.activity.TextSelectActivity"
     tools:showIn="@layout/activity_text_select">
@@ -18,24 +18,27 @@
 
         <TextView
             android:id="@+id/question"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:lineSpacingExtra="4dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/black" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/answers_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@android:color/darker_gray"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
             android:gravity="center"
             android:onClick="answerQuestion"
-            android:text="Submit"
+            android:text="@string/activity_questions_submit"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
