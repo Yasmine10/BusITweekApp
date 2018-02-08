@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <TextView
-        style="@style/tutorial_text_style"
-        android:text="On the map you will find a marker that is the place you must reach. At each place you will get a question about Brno. Sometimes you will have to scan a QR code to get it. Mendel divided a picture of a famous place in 9 parts. You already have one and must reach others. At each good answer, you will get at least one of eight missing parts. Whenever you want, you can check the picture with the parts you have already reached by clicking the button on the bottom right of the map. At the end you will need to find what’s on the picture to get a prize. Anyway, you will get directions to the place which is on the picture even if you don’t find the good answer after 3 tries. At anytime you can reset the game or show the tutorial in the settings." />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</LinearLayout>
+        <TextView
+            style="@style/tutorial_text_style"
+            android:text="On the map you will find a marker that is the place you must reach. At each place you will get a question about Brno. Sometimes you will have to scan a QR code to get it. Mendel divided a picture of a famous place in 9 parts. You already have one and must reach others. At each good answer, you will get at least one of eight missing parts. Whenever you want, you can check the picture with the parts you have already reached by clicking the button on the bottom right of the map. At the end you will need to find what’s on the picture to get a prize. Anyway, you will get directions to the place which is on the picture even if you don’t find the good answer after 3 tries. At anytime you can reset the game or show the tutorial in the settings." />
+
+    </LinearLayout>
+</ScrollView>
