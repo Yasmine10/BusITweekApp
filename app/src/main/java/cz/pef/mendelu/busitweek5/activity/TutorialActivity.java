@@ -73,11 +73,17 @@ public class TutorialActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Move to the next tutorial frame with FAB
+     *
+     * @param view Floating action button
+     */
     public void nextTutorialFrame(View view) {
         int item = viewPager.getCurrentItem();
         if (viewPager.getCurrentItem() + 1 < tutorialAdapter.getCount()) {
             viewPager.setCurrentItem(item + 1, true);
         } else {
+            finish();
             startActivity(new Intent(this, MapsActivity.class));
         }
     }
