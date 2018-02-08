@@ -14,6 +14,12 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toolbar;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -50,8 +56,10 @@ import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.activity.PuzzleImageActivity;
 import cz.pef.mendelu.busitweek5.database.MyDemoStoryLineDBHelper;
 
-public class MapsActivity extends FragmentActivity
+
+public class MapsActivity extends AppCompatActivity
         implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, GoogleMap.OnMarkerClickListener {
+
 
     private GoogleMap mMap;
     private StoryLine storyLine;
@@ -75,6 +83,7 @@ public class MapsActivity extends FragmentActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
         storyLine = StoryLine.open(this, MyDemoStoryLineDBHelper.class);
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi((LocationServices.API))
@@ -92,6 +101,18 @@ public class MapsActivity extends FragmentActivity
         //TODO
         // qrButton = findViewById(R.id.qr_code_button);
 
+
+        setToolbar();
+    }
+
+
+    /**
+     * Set toolbar
+     */
+    private void setToolbar() {
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        //toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorAccent));
+        setSupportActionBar(toolbar);
     }
 
 
@@ -388,5 +409,22 @@ public class MapsActivity extends FragmentActivity
     private void zoomToNewTask(LatLng position){
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(position, 15);
         mMap.animateCamera(cameraUpdate);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_map, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.menu_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
