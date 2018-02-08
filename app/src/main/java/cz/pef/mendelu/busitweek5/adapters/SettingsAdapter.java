@@ -13,6 +13,8 @@ import java.util.List;
 
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.activity.AboutUsActivity;
+import cz.pef.mendelu.busitweek5.activity.SettingsActivity;
+import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
 
 
 public class SettingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -54,8 +56,11 @@ public class SettingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             public void onClick(View view) {
                 switch (holder.getAdapterPosition()) {
                     case 0:
+                        SharedPrefUtil.setTutorialStatus(context.getApplicationContext(), true);
+                        ((SettingsActivity) context).tutorialDialog();
                         break;
                     case 1:
+                        SharedPrefUtil.setGameStatus(context.getApplicationContext(), true);
                         break;
                     case 2:
                         context.startActivity(new Intent(context, AboutUsActivity.class));
