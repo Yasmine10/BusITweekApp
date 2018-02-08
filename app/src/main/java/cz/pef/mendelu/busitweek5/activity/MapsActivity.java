@@ -38,9 +38,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cz.mendelu.busItWeek.library.BeaconTask;
+import cz.mendelu.busItWeek.library.ChoicePuzzle;
 import cz.mendelu.busItWeek.library.CodeTask;
 import cz.mendelu.busItWeek.library.GPSTask;
 import cz.mendelu.busItWeek.library.Puzzle;
+import cz.mendelu.busItWeek.library.SimplePuzzle;
 import cz.mendelu.busItWeek.library.StoryLine;
 import cz.mendelu.busItWeek.library.Task;
 import cz.mendelu.busItWeek.library.beacons.BeaconDefinition;
@@ -255,17 +257,18 @@ public class MapsActivity extends AppCompatActivity
     }
 
     private void runPuzzleActivity(Puzzle puzzle) {
-        /*TODO
+
         if (puzzle instanceof SimplePuzzle){
             Intent intent = new Intent( this, SimplePuzzleActivity.class);
             startActivity(intent);
-        }elseif (puzzle instanceof ImageSelectPuzzle){
+        /*}elseif (puzzle instanceof ImageSelectPuzzle){
             Intent intent = new Intent( this, ImageSelectActivity.class);
-            startActivity(intent);
-        }elseif (puzzle instanceof ChoicePuzzle){
+            startActivity(intent);*/
+        }
+        if (puzzle instanceof ChoicePuzzle){
             Intent intent = new Intent( this, TextSelectActivity.class);
             startActivity(intent);
-        }*/
+        }
     }
 
     private void initializeTasks() {
@@ -324,17 +327,14 @@ public class MapsActivity extends AppCompatActivity
                 mMap.animateCamera(cameraUpdate);
             }
         });
-        Log.i("updateMarkers", "tasks initilized");
 
     }
 
     private void updateMarkers() {
-        Log.i("updateMarkers", "updating markers...");
         for (Map.Entry<Task, Marker> entry : markers.entrySet()) {
             if (currentTask != null) {
                 if (currentTask.getName().equals(entry.getKey().getName())) {
                     entry.getValue().setVisible(true);
-                    Log.i("updateMarkers", "Current task set visible");
 
                 } else {
                     entry.getValue().setVisible(false);
