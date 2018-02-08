@@ -67,7 +67,6 @@ public class MapsActivity extends AppCompatActivity
 
     private BeaconUtil beaconUtil;
     private HashMap<Task, Marker> markers = new HashMap<>();
-    private ImageButton qrButton;
 
     private LatLngBounds.Builder builder;
 
@@ -95,7 +94,6 @@ public class MapsActivity extends AppCompatActivity
 
         beaconUtil = new BeaconUtil(this);
 
-        qrButton = findViewById(R.id.qr_code_button);
         setToolbar();
     }
 
@@ -192,20 +190,18 @@ public class MapsActivity extends AppCompatActivity
                                     googleApiClient,
                                     locationRequest, MapsActivity.this);
                 }
-                qrButton.setVisibility(View.GONE);
+                //qrButton.setVisibility(View.GONE);
             }
             if (currentTask instanceof BeaconTask) {
                 //i have Beacon task
                 beaconUtil.startRanging();
-                qrButton.setVisibility(View.GONE);
+                //qrButton.setVisibility(View.GONE);
 
             }
             if (currentTask instanceof CodeTask) {
                 //i have code task
-                qrButton.setVisibility(View.VISIBLE);
-
+                //qrButton.setVisibility(View.VISIBLE);
             }
-
         }
     }
 
@@ -258,15 +254,15 @@ public class MapsActivity extends AppCompatActivity
 
     private void runPuzzleActivity(Puzzle puzzle) {
 
-        if (puzzle instanceof SimplePuzzle){
-            Intent intent = new Intent( this, SimplePuzzleActivity.class);
+        if (puzzle instanceof SimplePuzzle) {
+            Intent intent = new Intent(this, SimplePuzzleActivity.class);
             startActivity(intent);
         /*}elseif (puzzle instanceof ImageSelectPuzzle){
             Intent intent = new Intent( this, ImageSelectActivity.class);
             startActivity(intent);*/
         }
-        if (puzzle instanceof ChoicePuzzle){
-            Intent intent = new Intent( this, TextSelectActivity.class);
+        if (puzzle instanceof ChoicePuzzle) {
+            Intent intent = new Intent(this, TextSelectActivity.class);
             startActivity(intent);
         }
     }
