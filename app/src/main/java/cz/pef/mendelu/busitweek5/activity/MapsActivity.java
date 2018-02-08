@@ -421,4 +421,8 @@ public class MapsActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void openQRreader(MenuItem item) {
+        //HEEEEEEERRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEE
+    }
 }
