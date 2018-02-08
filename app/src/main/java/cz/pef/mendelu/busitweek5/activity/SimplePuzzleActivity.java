@@ -1,8 +1,6 @@
 package cz.pef.mendelu.busitweek5.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -15,6 +13,7 @@ import cz.mendelu.busItWeek.library.StoryLine;
 import cz.mendelu.busItWeek.library.Task;
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.database.MyDemoStoryLineDBHelper;
+
 
 public class SimplePuzzleActivity extends AppCompatActivity {
 
@@ -30,7 +29,7 @@ public class SimplePuzzleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_puzzle);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         answer = findViewById(R.id.answer);
@@ -40,7 +39,6 @@ public class SimplePuzzleActivity extends AppCompatActivity {
         currentTask = storyLine.currentTask();
 
         puzzle = (SimplePuzzle) currentTask.getPuzzle();
-
 
         question.setText(puzzle.getQuestion());
     }
@@ -55,11 +53,9 @@ public class SimplePuzzleActivity extends AppCompatActivity {
             // Correct answer
             storyLine.currentTask().finish(true);
             finish();
-        }
-        else {
+        } else {
             // Wrong answer
-            Toast.makeText(this, "Wrong answer",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

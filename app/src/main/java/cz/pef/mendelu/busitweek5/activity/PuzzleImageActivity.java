@@ -2,6 +2,7 @@ package cz.pef.mendelu.busitweek5.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.GridView;
 
 import cz.pef.mendelu.busitweek5.R;
@@ -29,5 +30,22 @@ public class PuzzleImageActivity extends AppCompatActivity {
                 R.drawable.bottom_center,
                 R.drawable.bottom_right
         }));
+        setToolbar();
+    }
+
+    /**
+     * Set toolbar
+     */
+    private void setToolbar() {
+        getSupportActionBar().setTitle("Treasure");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
