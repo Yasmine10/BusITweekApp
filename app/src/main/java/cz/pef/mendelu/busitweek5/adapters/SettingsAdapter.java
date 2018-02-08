@@ -48,8 +48,19 @@ public class SettingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         final SettingsViewHolder viewHolder = (SettingsViewHolder) holder;
-        viewHolder.icon.setImageResource(R.drawable.ic_explore_white_36dp);
         viewHolder.title.setText(settingsList.get(position));
+
+        switch (position) {
+            case 0:
+                viewHolder.icon.setImageResource(R.drawable.ic_info_white_24dp);
+                break;
+            case 1:
+                viewHolder.icon.setImageResource(R.drawable.ic_settings_backup_restore_white_24dp);
+                break;
+            case 2:
+                viewHolder.icon.setImageResource(R.drawable.ic_people_white_24dp);
+                break;
+        }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

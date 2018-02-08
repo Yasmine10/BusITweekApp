@@ -13,7 +13,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,12 +27,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.SphericalUtil;
 
 import java.util.HashMap;
@@ -69,12 +66,9 @@ public class MapsActivity extends AppCompatActivity
     private BeaconUtil beaconUtil;
     private HashMap<Task, Marker> markers = new HashMap<>();
 
-
     private LatLngBounds.Builder builder;
 
-
     private StoryLine storyLine;
-
 
     private MenuItem qrButton;
 
@@ -103,8 +97,6 @@ public class MapsActivity extends AppCompatActivity
         beaconUtil = new BeaconUtil(this);
 
         setToolbar();
-
-
     }
 
     /**

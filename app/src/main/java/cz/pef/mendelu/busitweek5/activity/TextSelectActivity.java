@@ -1,16 +1,12 @@
 package cz.pef.mendelu.busitweek5.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +19,7 @@ import cz.mendelu.busItWeek.library.StoryLine;
 import cz.mendelu.busItWeek.library.Task;
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.database.MyDemoStoryLineDBHelper;
+
 
 public class TextSelectActivity extends AppCompatActivity {
 

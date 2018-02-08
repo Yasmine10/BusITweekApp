@@ -6,13 +6,14 @@ import android.os.Bundle;
 
 import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
 
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (SharedPrefUtil.getTutorialStatus(this.getApplicationContext())) {
-            startActivity(new Intent(this, SimplePuzzleActivity.class));
+            startActivity(new Intent(this, TutorialActivity.class));
         } else {
             startActivity(new Intent(this, MapsActivity.class));
         }

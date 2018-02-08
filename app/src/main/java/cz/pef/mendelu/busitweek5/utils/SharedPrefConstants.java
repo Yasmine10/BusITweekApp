@@ -6,6 +6,7 @@ final class SharedPrefConstants {
     static final String SP_START_NEW_GAME = "sp_start_new_game";
     static final String SP_TUTORIAL = "sp_tutorial";
     static final String SP_QUESTIONS = "sp_questions";
+    static final String SP_COMPLETE_GAME = "sp_complete_game";
 
     private SharedPrefConstants() {
     }

@@ -1,13 +1,12 @@
 package cz.pef.mendelu.busitweek5.activity;
 
-import android.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,11 +17,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import cz.pef.mendelu.busitweek5.R;
+import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
+
 
 public class TreasureActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private EditText treasureEditText;
+    private View shield;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,12 @@ public class TreasureActivity extends AppCompatActivity implements OnMapReadyCal
 
     private void initViews() {
         treasureEditText = findViewById(R.id.treasure_edit_text);
+        shield = findViewById(R.id.map_shield);
+        shield.bringToFront();
+        if (SharedPrefUtil.getGameComplete(this)) {
+            treasureEditText.setText("Bar that does not exist");
+            shield.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -53,9 +61,25 @@ public class TreasureActivity extends AppCompatActivity implements OnMapReadyCal
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
+    /**
+     * @param view
+     */
     public void openMap(View view) {
         if (treasureEditText.getText().toString().equalsIgnoreCase("Bar that does not exist")) {
-            // TODO: 08-Feb-18
+            hideKeyboard();
+            shield.animate().translationYBy(0).translationY(1000).setDuration(900).start();
+            SharedPrefUtil.setGameComplete(this, true);
+        }
+    }
+
+    /**
+     *
+     */
+    private void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 

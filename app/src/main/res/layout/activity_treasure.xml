@@ -36,12 +36,21 @@
         android:onClick="openMap"
         android:padding="4dp" />
 
-    <fragment xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="60dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
 
+        <View
+            android:id="@+id/map_shield"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fafafa" />
+
+        <fragment xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 </LinearLayout>

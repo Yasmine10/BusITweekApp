@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+
 public class SharedPrefUtil {
 
     private SharedPrefUtil() {
@@ -44,5 +45,17 @@ public class SharedPrefUtil {
     public static int getAnsweredQuestions(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         return sharedPref.getInt(SharedPrefConstants.SP_QUESTIONS, 0);
+    }
+
+    public static void setGameComplete(Context context, boolean gameStatus) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(SharedPrefConstants.SP_COMPLETE_GAME, gameStatus);
+        editor.apply();
+    }
+
+    public static boolean getGameComplete(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return sharedPref.getBoolean(SharedPrefConstants.SP_COMPLETE_GAME, false);
     }
 }
