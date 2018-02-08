@@ -4,16 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/tutorial_text_background"
-        android:elevation="6dp"
-        android:gravity="center"
-        android:text="Welcome in Brno ! It’s the second largest city in Czech Republic by population and area but also the largest Moravian city and the historical capital city of the Margraviate of Moravia. Brno lies at the confluence of the Svitava and Svratka rivers and has about 400 000 inhabitants. Swipe left to discover your guide for this awesome sightseeing."
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+        style="@style/tutorial_text_style"
+        android:text="Welcome in Brno ! It’s the second largest city in Czech Republic by population and area but also the largest Moravian city and the historical capital city of the Margraviate of Moravia. Brno lies at the confluence of the Svitava and Svratka rivers and has about 400 000 inhabitants. Swipe left to discover your guide for this awesome sightseeing." />
 
 </LinearLayout>
