@@ -240,8 +240,8 @@ public class MapsActivity extends AppCompatActivity
         Log.i("onResume", "current task set");
         if (currentTask == null) {
             // finish the app. Games is over.
-            Intent intent = new Intent(this, PuzzleImageActivity.class);
-            startActivity(intent);
+            //TODO
+            //Finishing screen, showing map with marker or something else??
         } else {
             initializeListeners();
             updateMarkers();
@@ -345,7 +345,7 @@ public class MapsActivity extends AppCompatActivity
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Skip task?")
-                .setMessage("Do you want to skipe the current task")
+                .setMessage("Do you want to skip the current task? (" + currentTask.getName() + ")")
                 .setCancelable(true)
                 .setPositiveButton("SKIP TASK", new DialogInterface.OnClickListener() {
                     @Override
