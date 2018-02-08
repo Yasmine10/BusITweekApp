@@ -46,9 +46,10 @@ public class SimplePuzzleActivity extends AppCompatActivity {
         question.setText(puzzle.getQuestion());
     }
 
+    /**
+     * @param view
+     */
     public void answerQuestion(View view) {
-        //Toast.makeText(this, answer.getText(),Toast.LENGTH_SHORT).show();
-
         String userAnswer = answer.getText().toString();
         String correctAnswer = puzzle.getAnswer();
 

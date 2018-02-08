@@ -6,7 +6,7 @@ import cz.mendelu.busItWeek.library.builder.StoryLineBuilder;
 
 public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
-    private static final int DB_VERSION = 11;
+    private static final int DB_VERSION = 12;
 
     public MyDemoStoryLineDBHelper() {
         super(DB_VERSION);
@@ -15,19 +15,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
     @Override
     protected void onCreate(StoryLineBuilder builder) {
 
-        builder.addGPSTask("1")
-                .location(49.210008, 16.614746)
-                .radius(10)
-                .simplePuzzle()
-                .question("I am a vast complex called Špilberk situated atop a hill of the same name. " +
-                        "I was established in the 13th centry by Přemysl Otakar II to protect both the Czech lands and the town of Brno." +
-                        " An occasional residence of Moravian margraves, I became a huge military fortress in the 17th and 18th centuries. " +
-                        "My walls offer an amazing view of Brno. I am a…")
-                .answer("castle")
-                .puzzleDone()
-                .taskDone();
-
-        builder.addBeaconTask("2")
+        builder.addBeaconTask("1")
                 .location(49.209938, 16.615687)
                 .beacon(6977,28402)
                 .hint("purple beacon")
@@ -42,6 +30,20 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .addChoice("a dragon", false)
                 .puzzleDone()
                 .taskDone();
+
+        builder.addGPSTask("2")
+                .location(49.210008, 16.614746)
+                .radius(10)
+                .simplePuzzle()
+                .question("I am a vast complex called Špilberk situated atop a hill of the same name. " +
+                        "I was established in the 13th centry by Přemysl Otakar II to protect both the Czech lands and the town of Brno." +
+                        " An occasional residence of Moravian margraves, I became a huge military fortress in the 17th and 18th centuries. " +
+                        "My walls offer an amazing view of Brno. I am a…")
+                .answer("castle")
+                .puzzleDone()
+                .taskDone();
+
+
 
         builder.addGPSTask("3")
                 .location(49.210899, 16.616477)

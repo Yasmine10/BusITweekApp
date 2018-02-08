@@ -12,7 +12,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (SharedPrefUtil.getTutorialStatus(this.getApplicationContext())) {
-            startActivity(new Intent(this, TutorialActivity.class));
+            startActivity(new Intent(this, TextSelectActivity.class));
         } else {
             startActivity(new Intent(this, MapsActivity.class));
         }

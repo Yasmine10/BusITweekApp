@@ -47,7 +47,6 @@ public class TextSelectActivity extends AppCompatActivity {
 
         puzzle = (ChoicePuzzle) currentTask.getPuzzle();
 
-
         question.setText(puzzle.getQuestion());
 
         listOfAnswers = findViewById(R.id.answers_list);
@@ -60,21 +59,18 @@ public class TextSelectActivity extends AppCompatActivity {
         for (Map.Entry<String, Boolean> entry : puzzle.getChoices().entrySet()) {
             answers.add(entry.getKey());
         }
-
         adapter.notifyDataSetChanged();
     }
 
     public void answerQuestion(View view) {
-
-
-
+        // TODO: 08-Feb-18
     }
 
-    public class AnswerViewHolder extends RecyclerView.ViewHolder{
+    class AnswerViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView answer;
+        TextView answer;
 
-        public AnswerViewHolder(View itemView) {
+        AnswerViewHolder(View itemView) {
             super(itemView);
             answer = itemView.findViewById(R.id.answer);
         }
@@ -96,12 +92,11 @@ public class TextSelectActivity extends AppCompatActivity {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (puzzle.getAnswerForChoice(holder.getAdapterPosition())){
+                    if (puzzle.getAnswerForChoice(holder.getAdapterPosition())) {
                         // Correct answer.
                         currentTask.finish(true);
                         finish();
-                    }
-                    else {
+                    } else {
                         Toast.makeText(TextSelectActivity.this, "Wrong answer", Toast.LENGTH_SHORT).show();
                     }
                 }
