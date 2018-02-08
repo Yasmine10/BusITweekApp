@@ -10,9 +10,7 @@
 
         <TextView
             style="@style/tutorial_text_style"
-            android:text="Do you know Gregor Mendel?
-Mendel was a scientist born in a German-speaking family in the Silesian part of the Austrian Empire (today’s Czech Republic). He gained posthumous recognition as the founder of the modern science of genetics. Today, a university in Brno is called Mendel University in memory of this great man.
-Mendel will guide you through the city to discover famous places of Brno which are plenty of history. Swipe right to lean about instructions for the game." />
+            android:text="@string/tutorial_second" />
 
     </LinearLayout>
 </ScrollView>
