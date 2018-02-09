@@ -353,10 +353,10 @@ public class MapsActivity extends AppCompatActivity
                     entry.getValue().setVisible(true);
 
                 } else {
-                    entry.getValue().setVisible(false);
+                    entry.getValue().setVisible(true);
                 }
             } else {
-                entry.getValue().setVisible(false);
+                entry.getValue().setVisible(true);
             }
         }
     }
