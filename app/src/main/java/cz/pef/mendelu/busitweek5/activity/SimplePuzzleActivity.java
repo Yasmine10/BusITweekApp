@@ -13,6 +13,7 @@ import cz.mendelu.busItWeek.library.StoryLine;
 import cz.mendelu.busItWeek.library.Task;
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.database.MyDemoStoryLineDBHelper;
+import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
 
 import static cz.pef.mendelu.busitweek5.utils.SharedPrefUtil.getAnsweredQuestions;
 
@@ -58,10 +59,11 @@ public class SimplePuzzleActivity extends AppCompatActivity {
             // Correct answer
             getAnsweredQuestions(this);
             storyLine.currentTask().finish(true);
+            SharedPrefUtil.setAnsweredQuestions(this);
             finish();
         } else {
             // Wrong answer
-            Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.question_wrong_answer, Toast.LENGTH_SHORT).show();
         }
     }
 }
