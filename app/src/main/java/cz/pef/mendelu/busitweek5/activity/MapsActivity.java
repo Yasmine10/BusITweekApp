@@ -17,6 +17,7 @@ import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -208,6 +209,7 @@ public class MapsActivity extends AppCompatActivity
             }
             if (currentTask instanceof CodeTask) {
                 //i have code task
+                Toast.makeText(this, "Find and scan QR code", Toast.LENGTH_SHORT).show();
                 //qrButton.setVisibility(View.VISIBLE);
             }
         }
