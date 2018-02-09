@@ -11,9 +11,12 @@ import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.adapters.GridAdapter;
 import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
 
+
 public class PuzzleImageActivity extends AppCompatActivity {
 
+    private static final int NUMBER_OF_QUESTIONS = 8;
     private GridView gridView;
+    private Menu menu;
     private int[] puzzles;
 
     @Override
@@ -164,7 +167,9 @@ public class PuzzleImageActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_puzzle, menu);
+        if (SharedPrefUtil.getAnsweredQuestions(this) == NUMBER_OF_QUESTIONS) {
+            getMenuInflater().inflate(R.menu.menu_puzzle, menu);
+        }
         return true;
     }
 

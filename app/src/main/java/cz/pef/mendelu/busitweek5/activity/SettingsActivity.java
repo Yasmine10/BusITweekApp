@@ -14,6 +14,8 @@ import java.util.List;
 
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.adapters.SettingsAdapter;
+import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
+
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -86,6 +88,7 @@ public class SettingsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
                         // TODO: 08-Feb-18 finish
+                        SharedPrefUtil.setGameComplete(SettingsActivity.this, false);
                         startActivity(new Intent(SettingsActivity.this, TutorialActivity.class));
                     }
                 })

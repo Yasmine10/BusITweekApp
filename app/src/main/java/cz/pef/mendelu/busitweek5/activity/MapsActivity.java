@@ -1,5 +1,6 @@
 package cz.pef.mendelu.busitweek5.activity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,7 +14,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,12 +28,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.SphericalUtil;
 
 import java.util.HashMap;
@@ -59,7 +57,7 @@ import cz.pef.mendelu.busitweek5.database.MyDemoStoryLineDBHelper;
 public class MapsActivity extends AppCompatActivity
         implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, GoogleMap.OnMarkerClickListener {
 
-
+    private static final int LOCATION_CODE_PERMISSION = 100;
     private GoogleMap mMap;
     private Task currentTask;
 
@@ -69,12 +67,9 @@ public class MapsActivity extends AppCompatActivity
     private BeaconUtil beaconUtil;
     private HashMap<Task, Marker> markers = new HashMap<>();
 
-
     private LatLngBounds.Builder builder;
 
-
     private StoryLine storyLine;
-
 
     private MenuItem qrButton;
 
@@ -103,8 +98,6 @@ public class MapsActivity extends AppCompatActivity
         beaconUtil = new BeaconUtil(this);
 
         setToolbar();
-
-
     }
 
     /**
@@ -120,21 +113,12 @@ public class MapsActivity extends AppCompatActivity
         startActivity(new Intent(this, PuzzleImageActivity.class));
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         initializeTasks();
 
-
+        //load map style
         try {
             boolean success = mMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(this, R.raw.google_maps_app));
@@ -145,23 +129,34 @@ public class MapsActivity extends AppCompatActivity
             Log.e("MapsActivity", "Can't find style. Error: ", e);
         }
 
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        mMap.setMyLocationEnabled(true);
 
+        enableLocationButton();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case LOCATION_CODE_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    enableLocationButton();
+                    break;
+                }
+        }
+    }
+
+    /**
+     *
+     */
+    @SuppressLint("MissingPermission")
+    private void enableLocationButton() {
+        mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
-
         mMap.setOnMarkerClickListener(this);
-
     }
 
     @Override
@@ -180,8 +175,10 @@ public class MapsActivity extends AppCompatActivity
         Log.i("Map", "onConnectionFailed");
     }
 
+    /**
+     *
+     */
     private void initializeListeners() {
-
         if (currentTask != null) {
             if (currentTask instanceof GPSTask) {
                 //i have gps task
@@ -191,8 +188,7 @@ public class MapsActivity extends AppCompatActivity
                             != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                             this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
                             != PackageManager.PERMISSION_GRANTED) {
-                        // TODO: Consider calling
-                        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+                        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_CODE_PERMISSION);
                         return;
                     }
                     LocationServices
@@ -213,13 +209,14 @@ public class MapsActivity extends AppCompatActivity
             if (currentTask instanceof CodeTask) {
                 //i have code task
                 //qrButton.setVisibility(View.VISIBLE);
-            
-
             }
         }
 
     }
 
+    /**
+     *
+     */
     private void cancelListeners() {
         if (googleApiClient.isConnected()) {
             LocationServices
@@ -267,6 +264,9 @@ public class MapsActivity extends AppCompatActivity
         cancelListeners();
     }
 
+    /**
+     * @param puzzle
+     */
     private void runPuzzleActivity(Puzzle puzzle) {
 
         if (puzzle instanceof SimplePuzzle) {
@@ -282,6 +282,9 @@ public class MapsActivity extends AppCompatActivity
         }
     }
 
+    /**
+     *
+     */
     private void initializeTasks() {
         builder = new LatLngBounds.Builder();
         for (Task task : storyLine.taskList()) {
@@ -338,9 +341,11 @@ public class MapsActivity extends AppCompatActivity
                 mMap.animateCamera(cameraUpdate);
             }
         });
-
     }
 
+    /**
+     *
+     */
     private void updateMarkers() {
         for (Map.Entry<Task, Marker> entry : markers.entrySet()) {
             if (currentTask != null) {
@@ -348,10 +353,10 @@ public class MapsActivity extends AppCompatActivity
                     entry.getValue().setVisible(true);
 
                 } else {
-                    entry.getValue().setVisible(false);
+                    entry.getValue().setVisible(true);
                 }
             } else {
-                entry.getValue().setVisible(false);
+                entry.getValue().setVisible(true);
             }
         }
     }
@@ -387,11 +392,13 @@ public class MapsActivity extends AppCompatActivity
                 })
                 .create()
                 .show();
-
-
         return true;
     }
 
+    /**
+     * @param menuItem
+     * @return
+     */
     public boolean scanForQrCode(MenuItem menuItem) {
         QRCodeUtil.startQRScan(this);
         return true;
@@ -411,6 +418,9 @@ public class MapsActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * @param position
+     */
     private void zoomToNewTask(LatLng position) {
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(position, 15);
         mMap.animateCamera(cameraUpdate);
@@ -434,9 +444,10 @@ public class MapsActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * @param item
+     */
     public void openQRreader(MenuItem item) {
 
     }
-
-
 }

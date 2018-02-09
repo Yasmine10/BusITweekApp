@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
 
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
