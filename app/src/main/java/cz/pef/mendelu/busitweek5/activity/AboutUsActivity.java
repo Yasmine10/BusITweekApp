@@ -12,6 +12,7 @@ import java.util.List;
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.adapters.AboutUsAdapter;
 
+
 public class AboutUsActivity extends AppCompatActivity {
 
     @Override

@@ -11,9 +11,11 @@ import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.adapters.GridAdapter;
 import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
 
+
 public class PuzzleImageActivity extends AppCompatActivity {
 
     private GridView gridView;
+    private Menu menu;
     private int[] puzzles;
 
     @Override

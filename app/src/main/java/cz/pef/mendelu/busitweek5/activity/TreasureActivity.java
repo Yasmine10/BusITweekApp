@@ -44,7 +44,7 @@ public class TreasureActivity extends AppCompatActivity implements OnMapReadyCal
         shield = findViewById(R.id.map_shield);
         shield.bringToFront();
         if (SharedPrefUtil.getGameComplete(this)) {
-            treasureEditText.setText("Bar that does not exist");
+            treasureEditText.setText(R.string.treasure_answer);
             shield.setVisibility(View.GONE);
         }
     }
@@ -57,7 +57,7 @@ public class TreasureActivity extends AppCompatActivity implements OnMapReadyCal
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(bar)
                 .zoom(15).build();
-        mMap.addMarker(new MarkerOptions().position(bar).title("Bar that does not exist"));
+        mMap.addMarker(new MarkerOptions().position(bar).title(getString(R.string.treasure_answer)));
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
@@ -65,7 +65,7 @@ public class TreasureActivity extends AppCompatActivity implements OnMapReadyCal
      * @param view
      */
     public void openMap(View view) {
-        if (treasureEditText.getText().toString().equalsIgnoreCase("Bar that does not exist")) {
+        if (treasureEditText.getText().toString().equalsIgnoreCase(getString(R.string.treasure_answer))) {
             hideKeyboard();
             shield.animate().translationYBy(0).translationY(1000).setDuration(900).start();
             SharedPrefUtil.setGameComplete(this, true);
@@ -73,7 +73,7 @@ public class TreasureActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     /**
-     *
+     * Hide software keyboard
      */
     private void hideKeyboard() {
         View view = this.getCurrentFocus();
@@ -87,7 +87,7 @@ public class TreasureActivity extends AppCompatActivity implements OnMapReadyCal
      * Set toolbar
      */
     private void setToolbar() {
-        getSupportActionBar().setTitle("Treasure");
+        getSupportActionBar().setTitle(R.string.treasure_title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
