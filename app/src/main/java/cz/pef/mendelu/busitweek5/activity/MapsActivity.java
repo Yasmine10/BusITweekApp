@@ -17,6 +17,7 @@ import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -133,7 +134,6 @@ public class MapsActivity extends AppCompatActivity
                 && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-
         enableLocationButton();
     }
 
@@ -203,15 +203,14 @@ public class MapsActivity extends AppCompatActivity
                 //i have Beacon task
                 beaconUtil.startRanging();
                 //qrButton.setVisible(false);
-
-
             }
+
             if (currentTask instanceof CodeTask) {
                 //i have code task
+                Toast.makeText(this, "Find and scan QR code", Toast.LENGTH_SHORT).show();
                 //qrButton.setVisibility(View.VISIBLE);
             }
         }
-
     }
 
     /**
@@ -242,17 +241,12 @@ public class MapsActivity extends AppCompatActivity
         }
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
         currentTask = storyLine.currentTask();
         Log.i("onResume", "current task set");
-        if (currentTask == null) {
-            // finish the app. Games is over.
-            //TODO
-            //Finishing screen, showing map with marker or something else??
-        } else {
+        if (currentTask != null) {
             initializeListeners();
             updateMarkers();
         }
@@ -272,9 +266,6 @@ public class MapsActivity extends AppCompatActivity
         if (puzzle instanceof SimplePuzzle) {
             Intent intent = new Intent(this, SimplePuzzleActivity.class);
             startActivity(intent);
-        /*}elseif (puzzle instanceof ImageSelectPuzzle){
-            Intent intent = new Intent( this, ImageSelectActivity.class);
-            startActivity(intent);*/
         }
         if (puzzle instanceof ChoicePuzzle) {
             Intent intent = new Intent(this, TextSelectActivity.class);
@@ -318,6 +309,7 @@ public class MapsActivity extends AppCompatActivity
                 beaconUtil.addBeacon(definition);
 
             }
+
             if (task instanceof CodeTask) {
                 newMarker = MapUtil.createColoredCircleMarker(
                         this,
@@ -376,7 +368,7 @@ public class MapsActivity extends AppCompatActivity
                         currentTask.skip();
                         currentTask = storyLine.currentTask();
                         if (currentTask == null) {
-                            //finish the app
+                            startActivity(new Intent(MapsActivity.this, PuzzleImageActivity.class));
                         } else {
                             cancelListeners();
                             initializeListeners();
