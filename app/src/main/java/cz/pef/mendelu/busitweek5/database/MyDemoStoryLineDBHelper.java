@@ -82,7 +82,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                         "The story goes that Anton Pilgram, the building’s architect was screwed out of money by Brno’s City Council and his payback was to mess with the design. " +
                         "The other version holds that he was simply too drunk to get it right. " +
                         "The building goes back to the 1200s, and formed part of the city defences during the famous siege by Swedish forces in 1645." +
-                        " What is the name of the street you are in ?")
+                        " What is the name of the street you are in ? \nFind the answer on Google.")
                 .answer("radnická")
                 .puzzleDone()
                 .taskDone();
