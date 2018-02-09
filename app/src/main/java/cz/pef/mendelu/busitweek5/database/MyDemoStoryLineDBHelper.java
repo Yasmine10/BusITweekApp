@@ -6,7 +6,7 @@ import cz.mendelu.busItWeek.library.builder.StoryLineBuilder;
 
 public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
-    private static final int DB_VERSION = 18;
+    private static final int DB_VERSION = 20;
 
     public MyDemoStoryLineDBHelper() {
         super(DB_VERSION);
@@ -76,7 +76,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
         builder.addGPSTask("5")
                 .radius(2000)
-                .location(49.211356, 16.617858)
+                .location(49.210431, 16.613112)
                 .simplePuzzle()
                 .question("On approach of the old Town Hall you might notice that one of the turrets on the decorative facade looks a bit skewed. " +
                         "The story goes that Anton Pilgram, the building’s architect was screwed out of money by Brno’s City Council and his payback was to mess with the design. " +
