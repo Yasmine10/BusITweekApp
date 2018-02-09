@@ -13,4 +13,5 @@
     <string name="treasure_answer">Bar that does not exist</string>
     <string name="treasure_title">Treasure</string>
     <string name="highlight_treasure">Get your treasure, if you now what is in this picture!</string>
+    <string name="question_wrong_answer">Wrong answer</string>
 </resources>

@@ -19,6 +19,7 @@ import cz.mendelu.busItWeek.library.StoryLine;
 import cz.mendelu.busItWeek.library.Task;
 import cz.pef.mendelu.busitweek5.R;
 import cz.pef.mendelu.busitweek5.database.MyDemoStoryLineDBHelper;
+import cz.pef.mendelu.busitweek5.utils.SharedPrefUtil;
 
 
 public class TextSelectActivity extends AppCompatActivity {
@@ -78,7 +79,6 @@ public class TextSelectActivity extends AppCompatActivity {
         @Override
         public AnswerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_text_choice, parent, false);
-
             return new AnswerViewHolder(itemView);
         }
 
@@ -90,11 +90,11 @@ public class TextSelectActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (puzzle.getAnswerForChoice(holder.getAdapterPosition())) {
-                        // Correct answer.
+                        SharedPrefUtil.setAnsweredQuestions(TextSelectActivity.this);
                         currentTask.finish(true);
                         finish();
                     } else {
-                        Toast.makeText(TextSelectActivity.this, "Wrong answer", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TextSelectActivity.this, R.string.question_wrong_answer, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
