@@ -6,7 +6,7 @@ import cz.mendelu.busItWeek.library.builder.StoryLineBuilder;
 
 public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
-    private static final int DB_VERSION = 21;
+    private static final int DB_VERSION = 23;
 
     public MyDemoStoryLineDBHelper() {
         super(DB_VERSION);
@@ -17,7 +17,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
         builder.addGPSTask("1")
                 .location(49.210008, 16.614746)
-                .radius(1000)
+                .radius(100)
                 .simplePuzzle()
                 .question("I am a vast complex called Špilberk situated atop a hill of the same name. " +
                         "I was established in the 13th centry by Přemysl Otakar II to protect both the Czech lands and the town of Brno." +
@@ -45,7 +45,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
         builder.addGPSTask("3")
                 .location(49.210899, 16.616477)
-                .radius(1000)
+                .radius(100)
                 .choicePuzzle()
                 .question("You’re now in front of the Constitutional Court of the Czech Republic. " +
                         "It is a specialized type of court which primarily works to protect the people in the Czech Republic against violations of the Constitution by either the legislature, " +
@@ -75,7 +75,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addGPSTask("5")
-                .radius(2000)
+                .radius(100)
                 .location(49.210431, 16.613112)
                 .simplePuzzle()
                 .question("On approach of the old Town Hall you might notice that one of the turrets on the decorative facade looks a bit skewed. " +
