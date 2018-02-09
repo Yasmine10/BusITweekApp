@@ -91,7 +91,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .qr("Mendelu")
                 .location(49.209782, 16.616275)
                 .simplePuzzle()
-                .question("In front of which kind of building are you right now ?")
+                .question("You are now in front of a famous place in Brno ! Here you can see plays, shows etc. What is this building ?")
                 .answer("theatre")
                 .puzzleDone()
                 .taskDone();
