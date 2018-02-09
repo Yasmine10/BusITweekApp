@@ -17,7 +17,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
         builder.addGPSTask("1")
                 .location(49.210008, 16.614746)
-                .radius(1000)
+                .radius(10)
                 .simplePuzzle()
                 .question("I am a vast complex called Špilberk situated atop a hill of the same name. " +
                         "I was established in the 13th centry by Přemysl Otakar II to protect both the Czech lands and the town of Brno." +
@@ -45,7 +45,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
         builder.addGPSTask("3")
                 .location(49.210899, 16.616477)
-                .radius(1000)
+                .radius(10)
                 .choicePuzzle()
                 .question("You’re now in front of the Constitutional Court of the Czech Republic. " +
                         "It is a specialized type of court which primarily works to protect the people in the Czech Republic against violations of the Constitution by either the legislature, " +
@@ -59,8 +59,8 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addCodeTask("4")
-                .qr("Welcome in Brno !")
-                .location(49.212113, 16.616230)
+                .qr("brno")
+                .location(49.209620, 16.613237)
                 .choicePuzzle()
                 .question("One of the most famous legends in the city of Brno is that of the dragon that once threatened the people. " +
                         "It is said that the beast was savaging the citizens and their livestock and no one seemed to know how to stop it. " +
@@ -75,7 +75,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addGPSTask("5")
-                .radius(2000)
+                .radius(10)
                 .location(49.210431, 16.613112)
                 .simplePuzzle()
                 .question("On approach of the old Town Hall you might notice that one of the turrets on the decorative facade looks a bit skewed. " +
