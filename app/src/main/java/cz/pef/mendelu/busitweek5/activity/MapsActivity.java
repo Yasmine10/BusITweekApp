@@ -364,7 +364,6 @@ public class MapsActivity extends AppCompatActivity
     }
 
 
-
     @Override
     public boolean onMarkerClick(Marker marker) {
 
