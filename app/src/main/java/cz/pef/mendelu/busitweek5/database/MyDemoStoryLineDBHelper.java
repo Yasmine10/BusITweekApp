@@ -67,7 +67,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                         "That is until a visiting butcher had a brainstorm. The tradesman called for an animal hide (ox or sheep depending on the telling) and a large amount of caustic lime. " +
                         "The lime was placed in the hide and sewn up to look like a juicy meal for the dragon. " +
                         "The trojan feast was fed to the dragon and it was successfully vanquished. " +
-                        "Actually, the dragon looks like :")
+                        "Actually, the dragon looks like (Remember the city tour) :")
                 .addChoice("A crcodile", true)
                 .addChoice("A seal", false)
                 .addChoice("A squirrel", false)
@@ -102,7 +102,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .hint("red beacon")
                 .simplePuzzle()
                 .question("You are now in front of a famous pub of Brno. " +
-                        "What is the full name of the main brand of blond beer ?")
+                        "What is the FULL name of the main brand of blond beer ?")
                 .answer("pilsner urquell")
                 .puzzleDone()
                 .taskDone();
